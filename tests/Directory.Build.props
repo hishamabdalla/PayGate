@@ -1,0 +1,38 @@
+<Project>
+
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <!-- Kept on so IDE0005 (unused usings) is enforced at build; CS1591 (missing XML docs) is not required here. -->
+    <!--
+      CA1707: underscores in test method names | CA2007: ConfigureAwait is not wanted in tests
+      CA1515: test classes must be public for discovery | CS1591: XML docs are not required on tests
+    -->
+    <NoWarn>$(NoWarn);CA1707;CA2007;CA1515;CS1591</NoWarn>
+
+    <!--
+      Convention: projects whose name ends in "Tests" are test executables. Anything else here
+      (e.g. PayGate.Conformance) is a shared test library referenced by test projects.
+      Decided by name because this file is evaluated before the project file's own properties.
+    -->
+    <_PayGateIsTestExe>$(MSBuildProjectName.EndsWith('Tests'))</_PayGateIsTestExe>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(_PayGateIsTestExe)' == 'true'">
+    <IsTestProject>true</IsTestProject>
+    <!-- xUnit v3 test projects are executables running on Microsoft.Testing.Platform. -->
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(_PayGateIsTestExe)' == 'true'">
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
+    <PackageReference Include="Shouldly" />
+    <PackageReference Include="NSubstitute" />
+
+    <Using Include="Shouldly" />
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,34 @@
+<Project>
+
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+
+  <!--
+    Versions are the latest stable release that was at least two weeks old when added.
+    Packages are added in the phase that first uses them, not ahead of time.
+  -->
+  <ItemGroup>
+    <!-- Build: version from git tags (lockstep across all packages) -->
+    <PackageVersion Include="MinVer" Version="8.0.0" />
+
+    <!-- Build: tracks the public API surface in PublicAPI.*.txt -->
+    <PackageVersion Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="5.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      Test stack. FluentAssertions 8+ is commercially licensed and Moq had the SponsorLink
+      incident, so neither is used.
+    -->
+    <PackageVersion Include="xunit.v3" Version="4.0.1" />
+    <PackageVersion Include="xunit.v3.extensibility.core" Version="4.0.1" />
+    <PackageVersion Include="xunit.v3.assert" Version="4.0.1" />
+    <!-- xUnit v3 runs on Microsoft.Testing.Platform (opted in via global.json); this is its coverage extension. -->
+    <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.11.2" />
+    <PackageVersion Include="Shouldly" Version="4.3.0" />
+    <PackageVersion Include="NSubstitute" Version="6.2.0" />
+  </ItemGroup>
+
+</Project>

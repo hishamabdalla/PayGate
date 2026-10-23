@@ -1,0 +1,8 @@
+<Project>
+
+  <!-- Normalizes source paths in PDBs and enables deterministic SourceLink output on CI. -->
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+</Project>

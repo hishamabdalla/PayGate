@@ -1,0 +1,12 @@
+<Project>
+
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <!-- Kept on so IDE0005 (unused usings) is enforced at build; CS1591 (missing XML docs) is not required here. -->
+    <!-- CA2007: ConfigureAwait is not needed in an ASP.NET Core app | CA1515: sample types are public by design -->
+    <NoWarn>$(NoWarn);CA2007;CA1515;CS1591</NoWarn>
+  </PropertyGroup>
+
+</Project>
