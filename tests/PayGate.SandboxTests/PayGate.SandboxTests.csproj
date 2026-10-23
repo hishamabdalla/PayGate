@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Calls real provider sandboxes. Run nightly with credentials; skipped otherwise. -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\PayGate.Kashier\PayGate.Kashier.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\PayGate.Kashier\PayGate.Kashier.csproj" />
+    <ProjectReference Include="..\PayGate.Conformance\PayGate.Conformance.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Shared, provider-independent conformance tests. Provider test projects reference this
+    library and inherit its abstract test classes (added in Phase 1). Not shipped.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\PayGate\PayGate.csproj" />
+    <ProjectReference Include="..\..\src\PayGate.Testing\PayGate.Testing.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.v3.extensibility.core" />
+    <PackageReference Include="xunit.v3.assert" />
+  </ItemGroup>
+
+</Project>
