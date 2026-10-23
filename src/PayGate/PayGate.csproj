@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>PayGate core: dependency-injection builder, gateway resolution, account and credential handling, payment-safe HTTP pipeline, signature and formatting helpers, and framework-agnostic webhook processing.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PayGate.Abstractions\PayGate.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

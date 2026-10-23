@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Provider-agnostic contracts and models for PayGate: payments, refunds, statuses, webhook events and errors. No dependencies beyond the .NET base class library.</Description>
+  </PropertyGroup>
+
+</Project>

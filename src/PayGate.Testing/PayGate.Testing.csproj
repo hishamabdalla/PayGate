@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Test helpers for applications using PayGate: a fake payment gateway and signed webhook builders. Independent of any test framework.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PayGate\PayGate.csproj" />
+  </ItemGroup>
+
+</Project>

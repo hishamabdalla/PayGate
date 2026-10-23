@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Kashier provider for PayGate: hosted payment sessions, status lookup, refunds and voids, webhook and redirect verification, and Kashier payouts.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PayGate\PayGate.csproj" />
+  </ItemGroup>
+
+</Project>
