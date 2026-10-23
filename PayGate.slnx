@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/samples/">
+    <Project Path="samples/PayGate.Sample.WebApi/PayGate.Sample.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/PayGate.Abstractions/PayGate.Abstractions.csproj" />
+    <Project Path="src/PayGate.AspNetCore/PayGate.AspNetCore.csproj" />
+    <Project Path="src/PayGate.Kashier/PayGate.Kashier.csproj" />
+    <Project Path="src/PayGate.Testing/PayGate.Testing.csproj" />
+    <Project Path="src/PayGate/PayGate.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PayGate.AspNetCore.Tests/PayGate.AspNetCore.Tests.csproj" />
+    <Project Path="tests/PayGate.Conformance/PayGate.Conformance.csproj" />
+    <Project Path="tests/PayGate.Kashier.Tests/PayGate.Kashier.Tests.csproj" />
+    <Project Path="tests/PayGate.SandboxTests/PayGate.SandboxTests.csproj" />
+    <Project Path="tests/PayGate.Tests/PayGate.Tests.csproj" />
+  </Folder>
+</Solution>

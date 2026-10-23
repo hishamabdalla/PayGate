@@ -1,0 +1,12 @@
+{
+  "solution": {
+    "path": "../PayGate.slnx",
+    "projects": [
+      "src/PayGate.Abstractions/PayGate.Abstractions.csproj",
+      "src/PayGate/PayGate.csproj",
+      "src/PayGate.AspNetCore/PayGate.AspNetCore.csproj",
+      "src/PayGate.Kashier/PayGate.Kashier.csproj",
+      "src/PayGate.Testing/PayGate.Testing.csproj"
+    ]
+  }
+}
