@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  FEED_URL: https://nuget.pkg.github.com/hishamabdalla/index.json
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # MinVer reads the version from the pushed tag
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - name: Restore (locked)
+        run: dotnet restore --locked-mode
+
+      - name: Build
+        run: dotnet build -c Release --no-restore
+
+      - name: Test
+        run: >
+          dotnet test -c Release --no-build
+          --filter-not-trait "Category=Sandbox"
+          --ignore-exit-code 8
+
+      - name: Pack
+        run: dotnet pack eng/PayGate.Packages.slnf -c Release --no-build -o artifacts/packages
+
+      - name: Consumer compile check
+        shell: pwsh
+        run: ./eng/consumer-check.ps1
+
+      - name: Publish to GitHub Packages
+        # PDBs are embedded in the assemblies: GitHub Packages does not accept .snupkg files.
+        run: >
+          dotnet nuget push "artifacts/packages/*.nupkg"
+          --source "$FEED_URL"
+          --api-key "${{ secrets.GITHUB_TOKEN }}"
+          --skip-duplicate
+
+      - name: Keep packages as a build artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: packages-${{ github.ref_name }}
+          path: artifacts/packages/*.nupkg
+          if-no-files-found: error

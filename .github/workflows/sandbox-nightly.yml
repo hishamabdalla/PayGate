@@ -1,0 +1,43 @@
+name: Sandbox (nightly)
+
+# Calls real provider sandboxes. Never runs on pull requests. Each test skips itself when its
+# credentials are not configured, so this workflow stays green until the secrets are added.
+on:
+  schedule:
+    - cron: '0 2 * * *' # 02:00 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  sandbox:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - name: Restore (locked)
+        run: dotnet restore --locked-mode
+
+      - name: Build
+        run: dotnet build tests/PayGate.SandboxTests -c Release --no-restore
+
+      - name: Sandbox tests
+        env:
+          KASHIER_MERCHANT_ID: ${{ secrets.KASHIER_MERCHANT_ID }}
+          KASHIER_SECRET_KEY: ${{ secrets.KASHIER_SECRET_KEY }}
+          KASHIER_PAYMENT_API_KEY: ${{ secrets.KASHIER_PAYMENT_API_KEY }}
+          KASHIER_TRANSFER_API_KEY: ${{ secrets.KASHIER_TRANSFER_API_KEY }}
+        run: >
+          dotnet test --project tests/PayGate.SandboxTests -c Release --no-build
+          --filter-trait "Category=Sandbox"
