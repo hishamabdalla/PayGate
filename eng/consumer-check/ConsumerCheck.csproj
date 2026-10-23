@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <!-- References every shipped PayGate package exactly as an application would. -->
+
+  <ItemGroup>
+    <PackageReference Include="PayGate.Abstractions" />
+    <PackageReference Include="PayGate" />
+    <PackageReference Include="PayGate.AspNetCore" />
+    <PackageReference Include="PayGate.Kashier" />
+    <PackageReference Include="PayGate.Testing" />
+  </ItemGroup>
+
+</Project>

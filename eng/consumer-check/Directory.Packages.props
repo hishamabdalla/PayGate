@@ -1,0 +1,16 @@
+<Project>
+
+  <!-- Central package management, as in manga-store. Versions come from the script. -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageVersion Include="PayGate.Abstractions" Version="$(PayGateVersion)" />
+    <PackageVersion Include="PayGate" Version="$(PayGateVersion)" />
+    <PackageVersion Include="PayGate.AspNetCore" Version="$(PayGateVersion)" />
+    <PackageVersion Include="PayGate.Kashier" Version="$(PayGateVersion)" />
+    <PackageVersion Include="PayGate.Testing" Version="$(PayGateVersion)" />
+  </ItemGroup>
+
+</Project>

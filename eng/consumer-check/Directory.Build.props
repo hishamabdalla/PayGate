@@ -1,0 +1,22 @@
+<Project>
+
+  <!--
+    Stand-alone consumer app. This file deliberately does NOT import the repository's
+    Directory.Build.props: it mirrors the strictest real consumer (manga-store) instead, so a
+    package that would break that build fails here first.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- Same app-level suppressions manga-store uses; anything else coming from PayGate fails the build. -->
+    <NoWarn>$(NoWarn);CA1707;CA1812;CA2007;CA2225;CA1000;IDE0032;CA1724;CA1515;CA1031;CA1305;CS1591</NoWarn>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+</Project>
