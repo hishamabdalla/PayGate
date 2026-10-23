@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <!-- Reference application showing app-owned persistence around PayGate. Filled in by Phase 2. -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\PayGate.AspNetCore\PayGate.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\src\PayGate.Kashier\PayGate.Kashier.csproj" />
+  </ItemGroup>
+
+</Project>

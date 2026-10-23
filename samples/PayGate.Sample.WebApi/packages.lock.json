@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dependencies": {
+    "net10.0": {
+      "paygate": {
+        "type": "Project",
+        "dependencies": {
+          "PayGate.Abstractions": "[1.0.0, )"
+        }
+      },
+      "paygate.abstractions": {
+        "type": "Project"
+      },
+      "paygate.aspnetcore": {
+        "type": "Project",
+        "dependencies": {
+          "PayGate": "[1.0.0, )"
+        }
+      },
+      "paygate.kashier": {
+        "type": "Project",
+        "dependencies": {
+          "PayGate": "[1.0.0, )"
+        }
+      }
+    }
+  }
+}
