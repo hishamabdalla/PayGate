@@ -81,6 +81,18 @@ override PayGate.RefundRequest.ToString() -> string!
 override PayGate.RefundResult.Equals(object? obj) -> bool
 override PayGate.RefundResult.GetHashCode() -> int
 override PayGate.RefundResult.ToString() -> string!
+override PayGate.Webhooks.PaymentEvent.Equals(object? obj) -> bool
+override PayGate.Webhooks.PaymentEvent.GetHashCode() -> int
+override PayGate.Webhooks.PaymentEvent.ToString() -> string!
+override PayGate.Webhooks.ReturnCallbackRequest.Equals(object? obj) -> bool
+override PayGate.Webhooks.ReturnCallbackRequest.GetHashCode() -> int
+override PayGate.Webhooks.ReturnCallbackRequest.ToString() -> string!
+override PayGate.Webhooks.ReturnCallbackResult.Equals(object? obj) -> bool
+override PayGate.Webhooks.ReturnCallbackResult.GetHashCode() -> int
+override PayGate.Webhooks.ReturnCallbackResult.ToString() -> string!
+override PayGate.Webhooks.WebhookRequest.Equals(object? obj) -> bool
+override PayGate.Webhooks.WebhookRequest.GetHashCode() -> int
+override PayGate.Webhooks.WebhookRequest.ToString() -> string!
 override sealed PayGate.ClientSdkAction.Equals(PayGate.NextAction? other) -> bool
 override sealed PayGate.DisplayReferenceAction.Equals(PayGate.NextAction? other) -> bool
 override sealed PayGate.NoAction.Equals(PayGate.NextAction? other) -> bool
@@ -411,6 +423,116 @@ PayGate.RefundStatus
 PayGate.RefundStatus.Failed = 2 -> PayGate.RefundStatus
 PayGate.RefundStatus.Pending = 0 -> PayGate.RefundStatus
 PayGate.RefundStatus.Succeeded = 1 -> PayGate.RefundStatus
+PayGate.Webhooks.IPaymentEventHandler
+PayGate.Webhooks.IPaymentEventHandler.HandleAsync(PayGate.Webhooks.PaymentEvent! paymentEvent, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<PayGate.Webhooks.WebhookHandlingOutcome>
+PayGate.Webhooks.IPaymentReturnParser
+PayGate.Webhooks.IPaymentReturnParser.ParseAsync(PayGate.Webhooks.ReturnCallbackRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<PayGate.Webhooks.ReturnCallbackResult!>
+PayGate.Webhooks.IPaymentReturnParser.Provider.get -> PayGate.PaymentProviderId
+PayGate.Webhooks.IWebhookVerifier
+PayGate.Webhooks.IWebhookVerifier.Provider.get -> PayGate.PaymentProviderId
+PayGate.Webhooks.IWebhookVerifier.VerifyAndParseAsync(PayGate.Webhooks.WebhookRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<PayGate.Webhooks.WebhookParseResult!>
+PayGate.Webhooks.PaymentEvent
+PayGate.Webhooks.PaymentEvent.<Clone>$() -> PayGate.Webhooks.PaymentEvent!
+PayGate.Webhooks.PaymentEvent.Account.get -> PayGate.PaymentAccount
+PayGate.Webhooks.PaymentEvent.Account.init -> void
+PayGate.Webhooks.PaymentEvent.Amount.get -> PayGate.Money?
+PayGate.Webhooks.PaymentEvent.Amount.init -> void
+PayGate.Webhooks.PaymentEvent.Equals(PayGate.Webhooks.PaymentEvent? other) -> bool
+PayGate.Webhooks.PaymentEvent.EventId.get -> string!
+PayGate.Webhooks.PaymentEvent.EventId.init -> void
+PayGate.Webhooks.PaymentEvent.MerchantReference.get -> string?
+PayGate.Webhooks.PaymentEvent.MerchantReference.init -> void
+PayGate.Webhooks.PaymentEvent.Metadata.get -> System.Collections.Generic.IReadOnlyDictionary<string!, string!>!
+PayGate.Webhooks.PaymentEvent.Metadata.init -> void
+PayGate.Webhooks.PaymentEvent.OccurredAt.get -> System.DateTimeOffset
+PayGate.Webhooks.PaymentEvent.OccurredAt.init -> void
+PayGate.Webhooks.PaymentEvent.OccurredAtIsReceiptTime.get -> bool
+PayGate.Webhooks.PaymentEvent.OccurredAtIsReceiptTime.init -> void
+PayGate.Webhooks.PaymentEvent.PaymentEvent() -> void
+PayGate.Webhooks.PaymentEvent.ProviderPaymentId.get -> string?
+PayGate.Webhooks.PaymentEvent.ProviderPaymentId.init -> void
+PayGate.Webhooks.PaymentEvent.ProviderTransactionId.get -> string?
+PayGate.Webhooks.PaymentEvent.ProviderTransactionId.init -> void
+PayGate.Webhooks.PaymentEvent.RawPayload.get -> string?
+PayGate.Webhooks.PaymentEvent.RawPayload.init -> void
+PayGate.Webhooks.PaymentEvent.RawStatus.get -> string?
+PayGate.Webhooks.PaymentEvent.RawStatus.init -> void
+PayGate.Webhooks.PaymentEvent.RefundAmount.get -> PayGate.Money?
+PayGate.Webhooks.PaymentEvent.RefundAmount.init -> void
+PayGate.Webhooks.PaymentEvent.RefundedTotal.get -> PayGate.Money?
+PayGate.Webhooks.PaymentEvent.RefundedTotal.init -> void
+PayGate.Webhooks.PaymentEvent.Status.get -> PayGate.PaymentStatus
+PayGate.Webhooks.PaymentEvent.Status.init -> void
+PayGate.Webhooks.PaymentEvent.Type.get -> PayGate.Webhooks.PaymentEventType
+PayGate.Webhooks.PaymentEvent.Type.init -> void
+PayGate.Webhooks.PaymentEventType
+PayGate.Webhooks.PaymentEventType.Other = 0 -> PayGate.Webhooks.PaymentEventType
+PayGate.Webhooks.PaymentEventType.PaymentAuthorized = 2 -> PayGate.Webhooks.PaymentEventType
+PayGate.Webhooks.PaymentEventType.PaymentCanceled = 5 -> PayGate.Webhooks.PaymentEventType
+PayGate.Webhooks.PaymentEventType.PaymentExpired = 6 -> PayGate.Webhooks.PaymentEventType
+PayGate.Webhooks.PaymentEventType.PaymentFailed = 4 -> PayGate.Webhooks.PaymentEventType
+PayGate.Webhooks.PaymentEventType.PaymentPending = 1 -> PayGate.Webhooks.PaymentEventType
+PayGate.Webhooks.PaymentEventType.PaymentSucceeded = 3 -> PayGate.Webhooks.PaymentEventType
+PayGate.Webhooks.PaymentEventType.RefundFailed = 8 -> PayGate.Webhooks.PaymentEventType
+PayGate.Webhooks.PaymentEventType.RefundSucceeded = 7 -> PayGate.Webhooks.PaymentEventType
+PayGate.Webhooks.ReturnCallbackRequest
+PayGate.Webhooks.ReturnCallbackRequest.<Clone>$() -> PayGate.Webhooks.ReturnCallbackRequest!
+PayGate.Webhooks.ReturnCallbackRequest.Account.get -> PayGate.PaymentAccount
+PayGate.Webhooks.ReturnCallbackRequest.Account.init -> void
+PayGate.Webhooks.ReturnCallbackRequest.Equals(PayGate.Webhooks.ReturnCallbackRequest? other) -> bool
+PayGate.Webhooks.ReturnCallbackRequest.GetQuery(string! name) -> string?
+PayGate.Webhooks.ReturnCallbackRequest.Query.get -> System.Collections.Generic.IReadOnlyDictionary<string!, System.Collections.Generic.IReadOnlyList<string!>!>!
+PayGate.Webhooks.ReturnCallbackRequest.Query.init -> void
+PayGate.Webhooks.ReturnCallbackRequest.ReturnCallbackRequest() -> void
+PayGate.Webhooks.ReturnCallbackResult
+PayGate.Webhooks.ReturnCallbackResult.<Clone>$() -> PayGate.Webhooks.ReturnCallbackResult!
+PayGate.Webhooks.ReturnCallbackResult.Account.get -> PayGate.PaymentAccount
+PayGate.Webhooks.ReturnCallbackResult.Account.init -> void
+PayGate.Webhooks.ReturnCallbackResult.Equals(PayGate.Webhooks.ReturnCallbackResult? other) -> bool
+PayGate.Webhooks.ReturnCallbackResult.IndicatedStatus.get -> PayGate.PaymentStatus?
+PayGate.Webhooks.ReturnCallbackResult.IndicatedStatus.init -> void
+PayGate.Webhooks.ReturnCallbackResult.MerchantReference.get -> string?
+PayGate.Webhooks.ReturnCallbackResult.MerchantReference.init -> void
+PayGate.Webhooks.ReturnCallbackResult.ProviderPaymentId.get -> string?
+PayGate.Webhooks.ReturnCallbackResult.ProviderPaymentId.init -> void
+PayGate.Webhooks.ReturnCallbackResult.ReturnCallbackResult() -> void
+PayGate.Webhooks.ReturnCallbackResult.Verification.get -> PayGate.Webhooks.ReturnCallbackVerification
+PayGate.Webhooks.ReturnCallbackResult.Verification.init -> void
+PayGate.Webhooks.ReturnCallbackVerification
+PayGate.Webhooks.ReturnCallbackVerification.Invalid = 0 -> PayGate.Webhooks.ReturnCallbackVerification
+PayGate.Webhooks.ReturnCallbackVerification.NotSigned = 2 -> PayGate.Webhooks.ReturnCallbackVerification
+PayGate.Webhooks.ReturnCallbackVerification.Valid = 1 -> PayGate.Webhooks.ReturnCallbackVerification
+PayGate.Webhooks.WebhookHandlingOutcome
+PayGate.Webhooks.WebhookHandlingOutcome.AlreadyProcessed = 1 -> PayGate.Webhooks.WebhookHandlingOutcome
+PayGate.Webhooks.WebhookHandlingOutcome.Ignored = 2 -> PayGate.Webhooks.WebhookHandlingOutcome
+PayGate.Webhooks.WebhookHandlingOutcome.Processed = 0 -> PayGate.Webhooks.WebhookHandlingOutcome
+PayGate.Webhooks.WebhookParseKind
+PayGate.Webhooks.WebhookParseKind.Ignored = 3 -> PayGate.Webhooks.WebhookParseKind
+PayGate.Webhooks.WebhookParseKind.InvalidSignature = 2 -> PayGate.Webhooks.WebhookParseKind
+PayGate.Webhooks.WebhookParseKind.Malformed = 0 -> PayGate.Webhooks.WebhookParseKind
+PayGate.Webhooks.WebhookParseKind.Verified = 1 -> PayGate.Webhooks.WebhookParseKind
+PayGate.Webhooks.WebhookParseResult
+PayGate.Webhooks.WebhookParseResult.Events.get -> System.Collections.Generic.IReadOnlyList<PayGate.Webhooks.PaymentEvent!>!
+PayGate.Webhooks.WebhookParseResult.Kind.get -> PayGate.Webhooks.WebhookParseKind
+PayGate.Webhooks.WebhookParseResult.Reason.get -> string?
+PayGate.Webhooks.WebhookRequest
+PayGate.Webhooks.WebhookRequest.<Clone>$() -> PayGate.Webhooks.WebhookRequest!
+PayGate.Webhooks.WebhookRequest.Account.get -> PayGate.PaymentAccount
+PayGate.Webhooks.WebhookRequest.Account.init -> void
+PayGate.Webhooks.WebhookRequest.Body.get -> System.ReadOnlyMemory<byte>
+PayGate.Webhooks.WebhookRequest.Body.init -> void
+PayGate.Webhooks.WebhookRequest.Equals(PayGate.Webhooks.WebhookRequest? other) -> bool
+PayGate.Webhooks.WebhookRequest.GetHeader(string! name) -> string?
+PayGate.Webhooks.WebhookRequest.GetQuery(string! name) -> string?
+PayGate.Webhooks.WebhookRequest.Headers.get -> System.Collections.Generic.IReadOnlyDictionary<string!, System.Collections.Generic.IReadOnlyList<string!>!>!
+PayGate.Webhooks.WebhookRequest.Headers.init -> void
+PayGate.Webhooks.WebhookRequest.Method.get -> string!
+PayGate.Webhooks.WebhookRequest.Method.init -> void
+PayGate.Webhooks.WebhookRequest.Query.get -> System.Collections.Generic.IReadOnlyDictionary<string!, System.Collections.Generic.IReadOnlyList<string!>!>!
+PayGate.Webhooks.WebhookRequest.Query.init -> void
+PayGate.Webhooks.WebhookRequest.ReceivedAt.get -> System.DateTimeOffset
+PayGate.Webhooks.WebhookRequest.ReceivedAt.init -> void
+PayGate.Webhooks.WebhookRequest.WebhookRequest() -> void
 static PayGate.ClientSdkAction.operator !=(PayGate.ClientSdkAction? left, PayGate.ClientSdkAction? right) -> bool
 static PayGate.ClientSdkAction.operator ==(PayGate.ClientSdkAction? left, PayGate.ClientSdkAction? right) -> bool
 static PayGate.CreatePaymentRequest.operator !=(PayGate.CreatePaymentRequest? left, PayGate.CreatePaymentRequest? right) -> bool
@@ -496,6 +618,18 @@ static PayGate.RefundRequest.operator !=(PayGate.RefundRequest? left, PayGate.Re
 static PayGate.RefundRequest.operator ==(PayGate.RefundRequest? left, PayGate.RefundRequest? right) -> bool
 static PayGate.RefundResult.operator !=(PayGate.RefundResult? left, PayGate.RefundResult? right) -> bool
 static PayGate.RefundResult.operator ==(PayGate.RefundResult? left, PayGate.RefundResult? right) -> bool
+static PayGate.Webhooks.PaymentEvent.operator !=(PayGate.Webhooks.PaymentEvent? left, PayGate.Webhooks.PaymentEvent? right) -> bool
+static PayGate.Webhooks.PaymentEvent.operator ==(PayGate.Webhooks.PaymentEvent? left, PayGate.Webhooks.PaymentEvent? right) -> bool
+static PayGate.Webhooks.ReturnCallbackRequest.operator !=(PayGate.Webhooks.ReturnCallbackRequest? left, PayGate.Webhooks.ReturnCallbackRequest? right) -> bool
+static PayGate.Webhooks.ReturnCallbackRequest.operator ==(PayGate.Webhooks.ReturnCallbackRequest? left, PayGate.Webhooks.ReturnCallbackRequest? right) -> bool
+static PayGate.Webhooks.ReturnCallbackResult.operator !=(PayGate.Webhooks.ReturnCallbackResult? left, PayGate.Webhooks.ReturnCallbackResult? right) -> bool
+static PayGate.Webhooks.ReturnCallbackResult.operator ==(PayGate.Webhooks.ReturnCallbackResult? left, PayGate.Webhooks.ReturnCallbackResult? right) -> bool
+static PayGate.Webhooks.WebhookParseResult.Ignored(string! reason) -> PayGate.Webhooks.WebhookParseResult!
+static PayGate.Webhooks.WebhookParseResult.InvalidSignature(string! reason) -> PayGate.Webhooks.WebhookParseResult!
+static PayGate.Webhooks.WebhookParseResult.Malformed(string! reason) -> PayGate.Webhooks.WebhookParseResult!
+static PayGate.Webhooks.WebhookParseResult.Verified(System.Collections.Generic.IReadOnlyList<PayGate.Webhooks.PaymentEvent!>! events) -> PayGate.Webhooks.WebhookParseResult!
+static PayGate.Webhooks.WebhookRequest.operator !=(PayGate.Webhooks.WebhookRequest? left, PayGate.Webhooks.WebhookRequest? right) -> bool
+static PayGate.Webhooks.WebhookRequest.operator ==(PayGate.Webhooks.WebhookRequest? left, PayGate.Webhooks.WebhookRequest? right) -> bool
 virtual PayGate.NextAction.EqualityContract.get -> System.Type!
 virtual PayGate.NextAction.Equals(PayGate.NextAction? other) -> bool
 virtual PayGate.NextAction.PrintMembers(System.Text.StringBuilder! builder) -> bool
