@@ -1,1 +1,70 @@
 #nullable enable
+const PayGate.PaymentAccount.DefaultName = "default" -> string!
+override PayGate.Currency.GetHashCode() -> int
+override PayGate.Currency.ToString() -> string!
+override PayGate.Money.GetHashCode() -> int
+override PayGate.Money.ToString() -> string!
+override PayGate.PaymentAccount.GetHashCode() -> int
+override PayGate.PaymentAccount.ToString() -> string!
+override PayGate.PaymentProviderId.GetHashCode() -> int
+override PayGate.PaymentProviderId.ToString() -> string!
+PayGate.Currency
+PayGate.Currency.Code.get -> string!
+PayGate.Currency.Currency() -> void
+PayGate.Currency.Equals(PayGate.Currency other) -> bool
+PayGate.Currency.MinorUnitExponent.get -> int
+PayGate.Money
+PayGate.Money.Add(PayGate.Money other) -> PayGate.Money
+PayGate.Money.Amount.get -> decimal
+PayGate.Money.CompareTo(PayGate.Money other) -> int
+PayGate.Money.Currency.get -> PayGate.Currency
+PayGate.Money.Equals(PayGate.Money other) -> bool
+PayGate.Money.IsZero.get -> bool
+PayGate.Money.Money() -> void
+PayGate.Money.Money(decimal amount, PayGate.Currency currency) -> void
+PayGate.Money.Subtract(PayGate.Money other) -> PayGate.Money
+PayGate.Money.ToMinorUnits() -> long
+PayGate.PaymentAccount
+PayGate.PaymentAccount.Equals(PayGate.PaymentAccount other) -> bool
+PayGate.PaymentAccount.IsDefault.get -> bool
+PayGate.PaymentAccount.Name.get -> string!
+PayGate.PaymentAccount.PaymentAccount() -> void
+PayGate.PaymentAccount.PaymentAccount(PayGate.PaymentProviderId provider, string! name = "default") -> void
+PayGate.PaymentAccount.Provider.get -> PayGate.PaymentProviderId
+PayGate.PaymentProviderId
+PayGate.PaymentProviderId.Equals(PayGate.PaymentProviderId other) -> bool
+PayGate.PaymentProviderId.PaymentProviderId() -> void
+PayGate.PaymentProviderId.PaymentProviderId(string! value) -> void
+PayGate.PaymentProviderId.Value.get -> string!
+static PayGate.Currency.Aed.get -> PayGate.Currency
+static PayGate.Currency.Create(string! code, int minorUnitExponent) -> PayGate.Currency
+static PayGate.Currency.Egp.get -> PayGate.Currency
+static PayGate.Currency.Eur.get -> PayGate.Currency
+static PayGate.Currency.FromCode(string! code) -> PayGate.Currency
+static PayGate.Currency.Gbp.get -> PayGate.Currency
+static PayGate.Currency.operator !=(PayGate.Currency left, PayGate.Currency right) -> bool
+static PayGate.Currency.operator ==(PayGate.Currency left, PayGate.Currency right) -> bool
+static PayGate.Currency.Sar.get -> PayGate.Currency
+static PayGate.Currency.TryFromCode(string? code, out PayGate.Currency currency) -> bool
+static PayGate.Currency.Usd.get -> PayGate.Currency
+static PayGate.Money.FromMinorUnits(long minorUnits, PayGate.Currency currency) -> PayGate.Money
+static PayGate.Money.operator !=(PayGate.Money left, PayGate.Money right) -> bool
+static PayGate.Money.operator +(PayGate.Money left, PayGate.Money right) -> PayGate.Money
+static PayGate.Money.operator -(PayGate.Money left, PayGate.Money right) -> PayGate.Money
+static PayGate.Money.operator <(PayGate.Money left, PayGate.Money right) -> bool
+static PayGate.Money.operator <=(PayGate.Money left, PayGate.Money right) -> bool
+static PayGate.Money.operator ==(PayGate.Money left, PayGate.Money right) -> bool
+static PayGate.Money.operator >(PayGate.Money left, PayGate.Money right) -> bool
+static PayGate.Money.operator >=(PayGate.Money left, PayGate.Money right) -> bool
+static PayGate.Money.Round(decimal amount, PayGate.Currency currency, System.MidpointRounding mode = System.MidpointRounding.AwayFromZero) -> PayGate.Money
+static PayGate.Money.Zero(PayGate.Currency currency) -> PayGate.Money
+static PayGate.PaymentAccount.operator !=(PayGate.PaymentAccount left, PayGate.PaymentAccount right) -> bool
+static PayGate.PaymentAccount.operator ==(PayGate.PaymentAccount left, PayGate.PaymentAccount right) -> bool
+static PayGate.PaymentAccount.Parse(string! value) -> PayGate.PaymentAccount
+static PayGate.PaymentAccount.TryParse(string? value, out PayGate.PaymentAccount account) -> bool
+static PayGate.PaymentProviderId.Fawry.get -> PayGate.PaymentProviderId
+static PayGate.PaymentProviderId.Kashier.get -> PayGate.PaymentProviderId
+static PayGate.PaymentProviderId.operator !=(PayGate.PaymentProviderId left, PayGate.PaymentProviderId right) -> bool
+static PayGate.PaymentProviderId.operator ==(PayGate.PaymentProviderId left, PayGate.PaymentProviderId right) -> bool
+static PayGate.PaymentProviderId.Paymob.get -> PayGate.PaymentProviderId
+static PayGate.PaymentProviderId.Stripe.get -> PayGate.PaymentProviderId
