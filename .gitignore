@@ -486,3 +486,8 @@ artifacts/
 *.local.json
 .env
 
+
+# Planning documents and decision records stay local
+IMPLEMENTATION_PLAN.md
+docs/adr/
+docs/plan/
