@@ -2,9 +2,10 @@ name: Sandbox (nightly)
 
 # Calls real provider sandboxes. Never runs on pull requests. Each test skips itself when its
 # credentials are not configured, so this workflow stays green until the secrets are added.
+# Manual only for now. To run it nightly, add back:
+#   schedule:
+#     - cron: '0 2 * * *' # 02:00 UTC daily
 on:
-  schedule:
-    - cron: '0 2 * * *' # 02:00 UTC daily
   workflow_dispatch:
 
 permissions:
