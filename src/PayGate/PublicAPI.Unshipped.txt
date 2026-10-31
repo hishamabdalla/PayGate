@@ -1,6 +1,19 @@
 #nullable enable
+override sealed PayGate.PaymentAccountOptions.ToString() -> string!
+PayGate.IPaymentCredentialsProvider<TOptions>
+PayGate.IPaymentCredentialsProvider<TOptions>.GetCredentialsAsync(PayGate.PaymentAccount account, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<TOptions!>
+PayGate.PaymentAccountOptions
+PayGate.PaymentAccountOptions.BaseUrlOverride.get -> System.Uri?
+PayGate.PaymentAccountOptions.BaseUrlOverride.set -> void
+PayGate.PaymentAccountOptions.Environment.get -> PayGate.PaymentEnvironment
+PayGate.PaymentAccountOptions.Environment.set -> void
+PayGate.PaymentAccountOptions.PaymentAccountOptions() -> void
+PayGate.PaymentEnvironment
+PayGate.PaymentEnvironment.Live = 1 -> PayGate.PaymentEnvironment
+PayGate.PaymentEnvironment.Sandbox = 0 -> PayGate.PaymentEnvironment
 PayGate.Providers.Signatures
 PayGate.Providers.WireFormat
+static PayGate.PaymentAccountOptions.Redact(string? secret) -> string!
 static PayGate.Providers.Signatures.BodyHash(System.ReadOnlySpan<byte> body) -> string!
 static PayGate.Providers.Signatures.FixedTimeEqualsBase64(System.ReadOnlySpan<byte> expected, string? actualBase64) -> bool
 static PayGate.Providers.Signatures.FixedTimeEqualsHex(System.ReadOnlySpan<byte> expected, string? actualHex) -> bool
@@ -16,3 +29,4 @@ static PayGate.Providers.WireFormat.ToDecimalString(decimal amount, int decimalP
 static PayGate.Providers.WireFormat.ToDecimalString(PayGate.Money money) -> string!
 static PayGate.Providers.WireFormat.ToMinorUnitsString(PayGate.Money money) -> string!
 static PayGate.Providers.WireFormat.TryGetRawProperty(System.Text.Json.JsonElement element, string! propertyName, out string? value) -> bool
+virtual PayGate.PaymentAccountOptions.AppendMembers(System.Text.StringBuilder! builder) -> void
