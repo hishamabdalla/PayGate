@@ -19,7 +19,9 @@ if (-not $PackagesDirectory) { $PackagesDirectory = [IO.Path]::Combine($PSScript
 $project = [IO.Path]::Combine($PSScriptRoot, 'consumer-check', 'ConsumerCheck.csproj')
 $isolatedPackages = [IO.Path]::Combine($PSScriptRoot, 'consumer-check', 'obj', 'packages')
 
+# The most recently packed version: the folder keeps older packs locally, and name order is not version order.
 $marker = Get-ChildItem -Path $PackagesDirectory -Filter 'PayGate.Abstractions.*.nupkg' -ErrorAction SilentlyContinue |
+    Sort-Object LastWriteTimeUtc -Descending |
     Select-Object -First 1
 if (-not $marker) {
     throw "No PayGate packages found in '$PackagesDirectory'. Run 'dotnet pack eng/PayGate.Packages.slnf -c Release -o artifacts/packages' first."
