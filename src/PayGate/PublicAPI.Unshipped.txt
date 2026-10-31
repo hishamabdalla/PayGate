@@ -1,1 +1,18 @@
 #nullable enable
+PayGate.Providers.Signatures
+PayGate.Providers.WireFormat
+static PayGate.Providers.Signatures.BodyHash(System.ReadOnlySpan<byte> body) -> string!
+static PayGate.Providers.Signatures.FixedTimeEqualsBase64(System.ReadOnlySpan<byte> expected, string? actualBase64) -> bool
+static PayGate.Providers.Signatures.FixedTimeEqualsHex(System.ReadOnlySpan<byte> expected, string? actualHex) -> bool
+static PayGate.Providers.Signatures.HmacSha256(string! key, string! data) -> byte[]!
+static PayGate.Providers.Signatures.HmacSha256(System.ReadOnlySpan<byte> key, System.ReadOnlySpan<byte> data) -> byte[]!
+static PayGate.Providers.Signatures.HmacSha512(string! key, string! data) -> byte[]!
+static PayGate.Providers.Signatures.HmacSha512(System.ReadOnlySpan<byte> key, System.ReadOnlySpan<byte> data) -> byte[]!
+static PayGate.Providers.Signatures.Sha256(string! data) -> byte[]!
+static PayGate.Providers.Signatures.Sha256(System.ReadOnlySpan<byte> data) -> byte[]!
+static PayGate.Providers.WireFormat.GetRawValue(System.Text.Json.JsonElement element) -> string?
+static PayGate.Providers.WireFormat.PercentEncode(string! value) -> string!
+static PayGate.Providers.WireFormat.ToDecimalString(decimal amount, int decimalPlaces = 2) -> string!
+static PayGate.Providers.WireFormat.ToDecimalString(PayGate.Money money) -> string!
+static PayGate.Providers.WireFormat.ToMinorUnitsString(PayGate.Money money) -> string!
+static PayGate.Providers.WireFormat.TryGetRawProperty(System.Text.Json.JsonElement element, string! propertyName, out string? value) -> bool
