@@ -1,7 +1,13 @@
 #nullable enable
+Microsoft.Extensions.DependencyInjection.PayGateServiceCollectionExtensions
 override sealed PayGate.PaymentAccountOptions.ToString() -> string!
 PayGate.IPaymentCredentialsProvider<TOptions>
 PayGate.IPaymentCredentialsProvider<TOptions>.GetCredentialsAsync(PayGate.PaymentAccount account, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<TOptions!>
+PayGate.PayGateBuilder
+PayGate.PayGateBuilder.AddAccountOptions<TOptions>(PayGate.PaymentAccount account, System.Action<TOptions!>! configure) -> Microsoft.Extensions.Options.OptionsBuilder<TOptions!>!
+PayGate.PayGateBuilder.AddEventHandler<THandler>() -> PayGate.PayGateBuilder!
+PayGate.PayGateBuilder.AddGateway(PayGate.PaymentAccount account, System.Func<System.IServiceProvider!, PayGate.IPaymentGateway!>! factory) -> PayGate.PayGateBuilder!
+PayGate.PayGateBuilder.Services.get -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
 PayGate.PaymentAccountOptions
 PayGate.PaymentAccountOptions.BaseUrlOverride.get -> System.Uri?
 PayGate.PaymentAccountOptions.BaseUrlOverride.set -> void
@@ -13,6 +19,7 @@ PayGate.PaymentEnvironment.Live = 1 -> PayGate.PaymentEnvironment
 PayGate.PaymentEnvironment.Sandbox = 0 -> PayGate.PaymentEnvironment
 PayGate.Providers.Signatures
 PayGate.Providers.WireFormat
+static Microsoft.Extensions.DependencyInjection.PayGateServiceCollectionExtensions.AddPayGate(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> PayGate.PayGateBuilder!
 static PayGate.PaymentAccountOptions.Redact(string? secret) -> string!
 static PayGate.Providers.Signatures.BodyHash(System.ReadOnlySpan<byte> body) -> string!
 static PayGate.Providers.Signatures.FixedTimeEqualsBase64(System.ReadOnlySpan<byte> expected, string? actualBase64) -> bool
